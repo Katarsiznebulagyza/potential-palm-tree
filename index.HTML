@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример Шапки Сайта</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- 1. Сброс стилей и переменные --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 60px; /* Отступ, чтобы шапка не перекрывала контент */
+            background-color: #f4f4f4;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- 2. Стилизация шапки (Header) --- */
+        .header {
+            background-color: #333; /* Темный фон шапки */
+            color: white;
+            padding: 10px 20px;
+            position: fixed; /* Закрепляем шапку вверху */
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between; /* Лого слева, меню справа */
+            align-items: center;
+            max-width: 1200px; /* Ограничиваем ширину контента */
+            margin: 0 auto;
+        }
+
+        /* --- 3. Логотип --- */
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #4CAF50; /* Зеленый цвет лого */
+        }
+
+        /* --- 4. Навигация (Меню) --- */
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 20px;
+        }
+
+        .nav-menu a {
+            font-size: 1.1em;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #4CAF50;
+        }
+
+        /* --- 5. Мобильное меню (Бургер) --- */
+        .menu-toggle {
+            display: none; /* Скрываем по умолчанию на десктопе */
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+        
+        /* Скрытое поле для управления состоянием меню */
+        #menu-check {
+            display: none;
+        }
+        
+        /* --- 6. Адаптивность (Медиазапрос) --- */
+        @media (max-width: 768px) {
+            
+            .menu-toggle {
+                display: block; /* Показываем бургер на мобильных */
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 60px; /* Ниже шапки */
+                left: 0;
+                width: 100%;
+                background-color: #444; /* Фон меню */
+                transition: max-height 0.5s ease-in-out;
+                max-height: 0; /* Изначально скрыто */
+                overflow: hidden;
+            }
+
+            .nav-menu ul {
+                flex-direction: column; /* Элементы в столбик */
+                padding: 10px 0;
+            }
+
+            .nav-menu li {
+                margin: 0;
+                text-align: center;
+                border-bottom: 1px solid #555;
+            }
+            
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+            }
+            
+            /* Когда чекбокс активен, открываем меню */
+            #menu-check:checked ~ .header-content .nav-menu {
+                max-height: 300px; /* Достаточная высота для отображения меню */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <input type="checkbox" id="menu-check"> 
+        
+        <div class="header-content">
+            
+            <div class="logo">
+                МойСайт
+            </div>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <label for="menu-check" class="menu-toggle">
+                <i class="fas fa-bars"></i> 
+            </label>
+            
+        </div>
+    </header>
+
+    <main style="padding: 20px;">
+        <h2>Добро пожаловать!</h2>
+        <p>Основной контент страницы начинается здесь. Шапка закреплена вверху.</p>
+        <div style="height: 1000px;">Прокрутите вниз, чтобы увидеть, как шапка остается на месте.</div>
+    </main>
+
+</body>
+</html>
